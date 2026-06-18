@@ -1,0 +1,105 @@
+@use "sass:math";
+// ================================================
+// インナー幅の設定
+// ================================================
+
+// コンテンツのインナー幅（Webサイトで一番多いインナー幅で設定）
+$inner-sp: 600px;
+$inner: 1200px;
+// ↑この数字はコーディングするデザインによって書き換えてください
+
+// 余白設定
+// PC時の余白はデザインに応じたものではなく、最低取っておいた方が良い余白
+$padding-pc: 25px;
+// SP時はデザインカンプに沿って書き換えてください
+$padding-sp: 15px;
+
+// ================================================
+// 色に関する設定
+// ================================================
+
+//色指定（デザインを見てよく使う色を設定！）
+$black: #202020;
+$white: #fff;
+$bg: #04040f;
+$accent: #8888ff;
+$muted: #555588;
+
+// ================================================
+// フォントについての設定
+// ================================================
+$base-font: 'Helvetica Neue', Arial, sans-serif;
+
+// フォントウェイト
+$regular: 400;
+$bold: 700;
+$extrabold: 800;
+
+
+// ================================================
+// メディアクエリとブレークポイントの設定
+// ================================================
+//ブレイクポイント(デザインによって異なる)
+$breakpoints: (
+    sm: 550,
+    md: 780,
+    lg: 1200,
+    xl: 1400,
+);
+
+
+//メディアクエリー
+$mediaquerys: (
+    sm: "screen and (min-width: #{map-get($breakpoints,'sm')}px)",
+    md: "screen and (min-width: #{map-get($breakpoints,'md')}px)",
+    lg: "screen and (min-width: #{map-get($breakpoints,'lg')}px)",
+    xl: "screen and (min-width: #{map-get($breakpoints,'xl')}px)",
+);
+
+// @include mq(){}で書くとブレークポイントが反映される（初期値はmd）
+@mixin mq($mediaquery: md) {
+    @media #{map-get($mediaquerys, $mediaquery)} {
+        @content;
+    }
+}
+
+/*  PCとSPの表示非表示の切り替え */
+/*(md)px以上で表示*/
+.pc-only {
+    display: none;
+
+    @include mq("md") {
+        display: block;
+    }
+}
+
+/*モバイルのみ表示*/
+.sp-only {
+    @include mq("md") {
+        display: none;
+    }
+}
+
+
+/*画像の縦横比設定*/
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* aタグのスタイルリセット*/
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+/* 電話リンクをPCでは無効*/
+@include mq("md") {
+    a[href^="tel:"] {
+        pointer-events: none;
+    }
+}

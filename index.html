@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Shooter | GSAP × ScrollTrigger Demo</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<section class="animation">
+    <div class="web__sticky inner">
+        <svg class="web__svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+
+            <!-- 放射ストランド 8本 -->
+            <path class="strand" d="M 598 342 C 450 220 220 100 30 10" stroke="#b0b0ff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <path class="strand" d="M 600 340 L 600 0" stroke="#b0b0ff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <path class="strand" d="M 602 342 C 750 220 980 100 1170 10" stroke="#b0b0ff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <path class="strand" d="M 600 350 L 1200 350" stroke="#c0c0ff" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path class="strand" d="M 602 358 C 750 480 980 600 1170 690" stroke="#b0b0ff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <path class="strand" d="M 600 360 L 600 700" stroke="#b0b0ff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <path class="strand" d="M 598 358 C 450 480 220 600 30 690" stroke="#b0b0ff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <path class="strand" d="M 600 350 L 0 350" stroke="#b0b0ff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+            <!-- クロスストランド 内側リング -->
+            <path class="cross" d="M 510 292 Q 554 255 600 220" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path class="cross" d="M 600 220 Q 646 255 690 292" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path class="cross" d="M 690 292 Q 706 320 720 350" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path class="cross" d="M 720 350 Q 706 380 690 408" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path class="cross" d="M 690 408 Q 646 445 600 480" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path class="cross" d="M 600 480 Q 554 445 510 408" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path class="cross" d="M 510 408 Q 494 380 480 350" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path class="cross" d="M 480 350 Q 494 320 510 292" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+
+            <!-- クロスストランド 外側リング -->
+            <path class="cross" d="M 385 195 Q 492 146 600 100" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path class="cross" d="M 600 100 Q 708 146 815 195" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path class="cross" d="M 815 195 Q 834 272 850 350" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path class="cross" d="M 850 350 Q 834 428 815 505" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path class="cross" d="M 815 505 Q 708 554 600 600" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path class="cross" d="M 600 600 Q 492 554 385 505" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path class="cross" d="M 385 505 Q 366 428 350 350" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path class="cross" d="M 350 350 Q 366 272 385 195" stroke="#7070bb" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+
+            <!-- 蜘蛛本体 -->
+            <g class="spider">
+                <!-- 脚（左側4本） -->
+                <path d="M 585 322 L 548 290 L 510 268" stroke="#9090cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 584 332 L 545 318 L 504 316" stroke="#9090cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 584 344 L 545 352 L 504 360" stroke="#9090cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 585 354 L 548 374 L 510 394" stroke="#9090cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- 脚（右側4本） -->
+                <path d="M 615 322 L 652 290 L 690 268" stroke="#9090cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 616 332 L 655 318 L 696 316" stroke="#9090cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 616 344 L 655 352 L 696 360" stroke="#9090cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 615 354 L 652 374 L 690 394" stroke="#9090cc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- 腹部 -->
+                <ellipse cx="600" cy="365" rx="22" ry="30" fill="#1a1a4a" stroke="#6060cc" stroke-width="1.5"/>
+                <!-- 頭胸部 -->
+                <circle cx="600" cy="328" r="17" fill="#1a1a4a" stroke="#6060cc" stroke-width="1.5"/>
+            </g>
+
+        </svg>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer__info" id="js-footer__info">
+        <p class="footer__info-title">ScrollTrigger × SVG</p>
+        <p class="footer__info-desc">stroke-dashoffset でパスを描画</p>
+        <p class="footer__info-desc">えい｜Webコーダー</p>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
